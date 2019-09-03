@@ -1,12 +1,21 @@
 ﻿//Utilities to be used in future projects
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-
-
-using System;
-
-public class Class1
+public static class Utilities
 {
-	public Class1()
-	{
-	}
+    public static string ProcessText(string textIn)
+    {
+        //return (textIn);
+
+        if (double.TryParse(textIn, out double num))
+        {
+            return ("Number");
+        }
+        else
+        {
+            return ("String");
+        }
+    }
 }
