@@ -19,3 +19,27 @@ public static class Utilities
         }
     }
 }
+
+class Person
+{
+public string Name;
+public virtual void SayHello()
+{
+Console.WriteLine("Hello");
+}
+}
+class RenFairePerson : Person
+{
+public override void SayHello()
+{
+Console.Write("Huzzah!");
+}
+}
+
+RenFairePerson person = new RenFairePerson();
+person.Name = "Igor the Ratcatcher";
+person.SayHello();RenFairePerson person = new RenFairePerson();
+person.Name = "Igor the Ratcatcher";
+person.SayHello();
+
+base.SayHello();
