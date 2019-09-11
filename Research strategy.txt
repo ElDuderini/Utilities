@@ -1,0 +1,5 @@
+Find example projects for similar things I am trying to do in my own code.
+If it is code I am having a hard time understanding, look up documentation on the
+what particular methods do.
+Watch videos about particular issues that I come across.
+Discuss with classmates about how to best tackle a problem if I have been struggling with it for a while.
