@@ -9,8 +9,7 @@ using UnityEngine.Networking;
 
 public class ScoreLog : MonoBehaviour
 {
-
-    //http://dreamlo.com/lb/KD4BAWAwOE6iwJSA8M7oign70cmejRFUeeBF4ADx4HoA
+    //establish variables
     private string sceneName;
 
     private float throwTime;
@@ -32,12 +31,13 @@ public class ScoreLog : MonoBehaviour
     public TMP_InputField username;
 
 
-
+    //code used to access the website to store the information from the match
     const string privateCode = "KD4BAWAwOE6iwJSA8M7oign70cmejRFUeeBF4ADx4HoA";
     const string webURL = "http://dreamlo.com/lb/";
 
     private void Awake()
     {
+      //Hide the menus that show the player the result of the match
         resultsShown = false;
         DontDestroyOnLoad(this.gameObject);
         win.SetActive(false);
@@ -45,6 +45,7 @@ public class ScoreLog : MonoBehaviour
         draw.SetActive(false);
         resultsShown = false;
 
+        //if the player has already entered a username in a previous win, then use that same username and prevent them from making a new one.
         if (PlayerPrefs.HasKey("username"))
         {
             username.text = PlayerPrefs.GetString("username");
@@ -59,6 +60,7 @@ public class ScoreLog : MonoBehaviour
         SceneCheck();
     }
 
+//preform different actions in other scenes, like logging information every second to keep track of score, then present the informaion
     private void SceneCheck()
     {
         if(sceneName == "ArenaThrow")
@@ -69,6 +71,7 @@ public class ScoreLog : MonoBehaviour
         {
             catchTime += Time.deltaTime;
         }
+        //let the player see the score and let them use the mouse to navaigate the menu
         else if(sceneName == "Results" && resultsShown == false)
         {
             ShowResults();
@@ -84,6 +87,7 @@ public class ScoreLog : MonoBehaviour
         }
     }
 
+    //method used to determine what type of result the player will see regarding if they win, lose or tie with the bot.
     private void ShowResults()
     {
 
@@ -117,6 +121,7 @@ public class ScoreLog : MonoBehaviour
         }
     }
 
+//when the player presses the button the upload their score, then save the username they use plus upload the score
     public void UploadButton()
     {
         string name = enteredName.text;
@@ -128,15 +133,18 @@ public class ScoreLog : MonoBehaviour
         StartCoroutine(UploadScore(name, score));
     }
 
+//access the website to create a new entry in the leaderboard
     IEnumerator UploadScore(string name, int score)
     {
         UnityWebRequest request = UnityWebRequest.Get(webURL + privateCode + "/add/" + name + "/" + score);
         yield return request.SendWebRequest();
 
+        //if upload fails, then throw and error message
         if (request.isNetworkError)
         {
             print("Unable to upload score");
         }
+        //if it works, then prevent the user from chaning their username
         else
         {
             print("Uploaded Score");

@@ -11,7 +11,6 @@ public class MenuScript : MonoBehaviour
     public GameObject optionsMenu;
 
     public GameObject leaderBoard;
-    //http://dreamlo.com/lb/KD4BAWAwOE6iwJSA8M7oign70cmejRFUeeBF4ADx4HoA
 
     public AudioMixer master;
 
@@ -30,8 +29,10 @@ public class MenuScript : MonoBehaviour
         SavedPrefs();
     }
 
+    //Check to see if the player has set up preferences for the options the choose, if not, then utilize default settings
     private void SavedPrefs()
     {
+      //volume controll preferences
         if (!PlayerPrefs.HasKey("Volume"))
         {
             PlayerPrefs.SetFloat("Volume", 70);
@@ -49,6 +50,7 @@ public class MenuScript : MonoBehaviour
             ChangeVolume(vol);
         }
 
+        //graphics quality preferences
         if (!PlayerPrefs.HasKey("Quality"))
         {
             PlayerPrefs.SetInt("Quality", 1);
@@ -84,6 +86,7 @@ public class MenuScript : MonoBehaviour
             }
         }
 
+        //player Resolution preferences
         if (!PlayerPrefs.HasKey("Resolution"))
         {
             PlayerPrefs.SetInt("Resolution", 1);
@@ -112,6 +115,8 @@ public class MenuScript : MonoBehaviour
             }
         }
     }
+
+    //These five methods are used for load scenes, open menus and quit the game
     public void PlaySolo()
     {
         SceneManager.LoadScene("ArenaThrow");
@@ -124,7 +129,6 @@ public class MenuScript : MonoBehaviour
 
     public void LeaderBoard()
     {
-        print("Leaderboard not added yet");
         leaderBoard.SetActive(true);
     }
 
@@ -138,6 +142,7 @@ public class MenuScript : MonoBehaviour
         Application.Quit();
     }
 
+//Check to see if the player wants to open a menu or if they want to quit the game by pressing escape
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -157,7 +162,7 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-
+//method used to change the graphics quality based on player preferences
     public void ChangeQuality(float QualityNum)
     {
 
@@ -185,6 +190,7 @@ public class MenuScript : MonoBehaviour
         }
     }
 
+//method used to display to the player what the volume value is in the options menu, turning the slider data into actual volume change plus save player preferences
     public void ChangeVolume(float Volume)
     {
 
@@ -201,9 +207,10 @@ public class MenuScript : MonoBehaviour
         PlayerPrefs.SetFloat("Volume", prefVal);
     }
 
+    //method used to change the Resolution of the game using player preferences from a drop down menu
     public void ChangeRes(int res)
     {
-        switch (res) 
+        switch (res)
         {
             case 0:
                 Screen.SetResolution(1280, 720, true);
@@ -221,5 +228,5 @@ public class MenuScript : MonoBehaviour
                 break;
         }
     }
-    
+
 }
