@@ -3,3 +3,19 @@ If it is code I am having a hard time understanding, look up documentation on th
 what particular methods do.
 Watch videos about particular issues that I come across.
 Discuss with classmates about how to best tackle a problem if I have been struggling with it for a while.
+
+What I learned:
+I feel like my research strategies improved quite a bit over the semester by finding more
+specific examples for the problems I wanted to solve, adapting them for my specific uses.
+Along with that method, utilizing the official code reference has been extremely useful to learn
+the potential of each of the commands that I look into using. Plus the examples provided on there
+give me a good idea on how to use the code.
+
+Future ideas:
+I feel like trying more experimentation with different methods of coding along with
+more uses of varied Unity Engine functions will really help me optimize my code.
+An example of this working for me this semester is when I set up the volume slider,
+at first using scrollbar instead of a slider with a case/switch system. When I
+used the slider instead, the case switch system became redundant and allowed for
+much less code to be read, making the program more efficient in both performance
+and readability
